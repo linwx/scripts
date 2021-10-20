@@ -68,6 +68,8 @@ async function run() {
     $.Token = ''
     $.Pin = ''
     $.inviter = ''
+    await takePostRequest('getEncryptedPinColor');
+      return;
     await takePostRequest('isvObfuscator');
     await takePostRequest('userInfo');
     if($.Bearer == '') return
@@ -153,6 +155,10 @@ async function takePostRequest(type) {
   let body = ``;
   let method = 'POST'
   switch (type) {
+    case 'getEncryptedPinColor':
+          `https://api.m.jd.com/client.action?functionId=getEncryptedPinColor`;
+          body=``;
+          break;
     case 'isvObfuscator':
       url = `https://api.m.jd.com/client.action?functionId=isvObfuscator`;
       body = `area=16_1315_3486_59648&body=%7B%22url%22%3A%22https%3A%5C/%5C/ddsj-dz.isvjcloud.com%22%2C%22id%22%3A%22%22%7D&build=167814&client=apple&clientVersion=10.1.4&d_brand=apple&d_model=iPhone12%2C1&eid=eidIeb54812323sf%2BAJEbj5LR0Kf6GUzM9DKXvgCReTpKTRyRwiuxY/uvRHBqebAAKCAXkJFzhWtPj5uoHxNeK3DjTumb%2BrfXOt1w0/dGmOJzfbLuyNo&isBackground=N&joycious=72&lang=zh_CN&networkType=wifi&networklibtype=JDNetworkBaseAF&openudid=8a0d1837f803a12eb217fcf5e1f8769cbb3f898d&osVersion=14.3&partner=apple&rfs=0000&scope=01&screen=828%2A1792&sign=c8afbec4d4154c805df6fe0df8cb912f&st=1631889047122&sv=122&uemps=0-0&uts=0f31TVRjBSvb8zBUzHW5p1o1wbLCbHauTTreOnycneuWHYoZst0N7s4rTeFacDhCJnJNfFiqbcT1OXsBoHOXQYN926Ap2sr3zfchsEXk7lu4JO1uRn0nNK6szw88y4QmJj21u7poGsXqivIm1eoa5GruqZ3jYalxmzDPUSSqOug7Gu3BK8pgQ2vaYRYGBo8BMhd1YF4fP6xLgUwQG/wcsQ%3D%3D&uuid=hjudwgohxzVu96krv/T6Hg%3D%3D&wifiBssid=796606e8e181aa5865ec20728a27238b`;
